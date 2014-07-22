@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>mac 酷狗</title>
+<style type="text/css">
+/* reset
+--------------------------------------------*/
+html{ -webkit-text-size-adjust:none;}
+body{font:12px/1.5 Arial, Microsoft Yahei,simsun,sans-serif;}
+input{ font-family:Arial, Microsoft Yahei,simsun,sans-serif;;}
+body,table,tr,td,ul,li,div,span,h1,h2,h3,h4,h5,h6,p,pre,form,fieldset,input,ol,dl,dd,dt,th,thead,tbody,tfoot,blockquote,iframe{margin:0; padding:0;}
+h1,h2,h3,h4,h5,h6,p,a{font-size:100%;}
+ul,ol,li{list-style:none;}
+table{border-collapse:collapse; border-style:none;}
+
+a img{border:0;}
+a{ text-decoration:none;}
+input,select,img{vertical-align:middle;}
+.clear{clear:both;height:0;visibility:hidden;width:0;overflow:hidden;}
+.clearfix:after { display:block; content:".";clear:both;height:0;visibility:hidden;width:0;overflow:hidden; }
+.clearfix {zoom:1; }
+
+a{ text-decoration:none;}
+a:hover{}
+body{color:#474747;}
+
+textarea{resize: vertical;}
+
+/* page
+-----------------------------------------*/
+.loading{ position:absolute; top:270px; left:50%; margin-left:-250px; display:block; width:500px; font-size:14px; color:#888888; text-align:center;}
+.loading i{ display:block; width:36px; height:36px; margin:0 auto 30px; overflow:hidden; background:url(images/mac_loading.gif);}
+.false{ position:absolute; top:161px; left:50%; margin-left:-250px; display:block; width:500px; font-size:14px; color:#888888; text-align:center;}
+.false i{ display:block; width:170px; height:145px; margin:0 auto 30px; overflow:hidden; background:url(images/mac_isnull.png);}
+.false a{ color:#0199eb;}
+#iframe{ position:absolute; top:-500px; left:-500px;}
+</style>
+<script type="text/javascript">
+/* js 给 客户端接口 */
+var f2mac = {
+	reflash:function(){
+		window.history.go(0);
+	},
+	prev:function(){
+		window.history.go(0);
+	},
+	search:function(keyword){
+		return false;
+	}
+}
+</script>
+</head>
+<body>
+<div id="loading" class="loading"><i></i>好音乐马上送到</div>
+<div id="ifalse" class="false" style="display:none;"><i></i>你的网络状况不佳哦，请刷新或检查是否联网。如仍有问题，请 <a href="javascript:localMgr.JumpTo_('http://www.kugou.com/kf/user/app/');">反馈</a> 给我们。</div>
+<iframe src="" id="iframe"></iframe>
+<script type="text/javascript">
+!function(){
+	var iframe = document.getElementById("iframe"),
+		loading = document.getElementById("loading"),
+		ifalse = document.getElementById("ifalse"),
+    /*
+     * 测试地址：http://aptest.kugou.com/mac/dev/
+     * 实际地址：http://mac.kugou.com
+     */
+    targetHref = "http://mac.kugou.com" + "/?t=" + Number(new Date());
+
+	iframe.onload = function(){
+		window.location = targetHref;
+	};
+
+	iframe.src = targetHref;
+
+	setTimeout(function(){
+		iframe.onload = null;
+		ifalse.style.display = "";
+		loading.style.display = "none";
+	},12000)
+}();
+</script>
+</body>
+</html>
