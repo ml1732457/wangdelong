@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EAIntroView.h"
 
-@interface ViewController : UIViewController
+
+@interface ViewController : UIViewController <EAIntroDelegate>
 
 @end

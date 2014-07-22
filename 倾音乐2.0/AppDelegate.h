@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class  IIViewDeckController;
+@class  MJsongList;
+@class  MJmainList;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+
+@property (strong,nonatomic)IIViewDeckController *desk;
+@property (strong,nonatomic)MJmainList *mainList;
+@property (strong,nonatomic)MJsongList *songList;
 
 @end
